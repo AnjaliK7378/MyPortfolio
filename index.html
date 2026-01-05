@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjali Kamble | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ----- Global Styles ----- */
+        * {margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat', sans-serif;}
+        body {background:#f9f9f9; color:#333; scroll-behavior: smooth; overflow-x: hidden;}
+        a {text-decoration:none; color:inherit;}
+        section {padding:80px 10%;}
+        h1,h2,h3 {color:#111;}
+        .container {max-width:1200px; margin:auto;}
+
+        /* ----- Navbar ----- */
+        nav {position:fixed; width: 100%; top:0; background:#fff; display:flex; justify-content:space-between; align-items:center; padding:15px 10%; box-shadow:0 2px 5px rgba(0,0,0,0.1); z-index:1000;}
+        nav .logo {font-weight:700; font-size:1.5rem; color:#4d85ff;}
+        nav ul {list-style:none; display:flex; gap:25px;}
+        nav ul li a {font-weight:500; transition:0.3s;}
+        nav ul li a:hover {color:#4d85ff;}
+
+        /* ----- Hero Section ----- */
+        #hero {display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; background: linear-gradient(135deg, #ff7a5c, #4d85ff); color:#fff;}
+        #hero h1 {font-size:3.5rem; margin-bottom:10px;}
+        #hero h2 {font-size:1.8rem; height:35px; margin-bottom:30px; font-weight: 400;}
+        .btn {padding:12px 25px; background:#fff; color:#4d85ff; font-weight:600; border:none; border-radius:25px; cursor:pointer; margin:5px; transition:0.3s; display: inline-block;}
+        .btn:hover {background:#ffecec; transform: translateY(-2px);}
+        .btn-outline {background: transparent; border: 2px solid #fff; color: #fff;}
+        .btn-outline:hover {background: #fff; color: #4d85ff;}
+
+        /* ----- About Section ----- */
+        #about {display:flex; flex-wrap:wrap; align-items:center; gap:60px; padding-top: 120px;}
+        .profile-img-container {flex: 0 0 300px; position: relative;}
+        #about img {
+            width: 300px; height: 300px; border-radius: 50%; object-fit: cover; 
+            border: 8px solid #4d85ff; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        #about .text {flex:1;}
+        #about h2 {margin-bottom: 20px; font-size: 2.5rem;}
+        #about p {line-height: 1.6; margin-bottom: 15px; font-size: 1.1rem; color: #555;}
+        
+        .achievement-badge {
+            display: inline-block; background: #eef2ff; color: #4d85ff; 
+            padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-top: 10px;
+        }
+
+        /* ----- Skills Section ----- */
+        #skills h2 {margin-bottom: 30px;}
+        .skill {margin-bottom:25px;}
+        .skill-name {font-weight:600; margin-bottom:8px; display: flex; justify-content: space-between;}
+        .skill-bar {height:12px; width:100%; background:#e0e0e0; border-radius:10px; overflow:hidden;}
+        .skill-bar .progress {
+            height:100%; width:0%; background:#4d85ff; border-radius:10px; 
+            transition: width 1.5s cubic-bezier(0.1, 0.42, 0.41, 1);
+        }
+
+        /* ----- Projects Section ----- */
+        #projects .project-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:25px;}
+        .project-card {background:#fff; padding:30px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.05); transition:0.3s; display: flex; flex-direction: column;}
+        .project-card:hover {transform:translateY(-10px); box-shadow:0 12px 30px rgba(0,0,0,0.1);}
+        .project-card h3 {margin-bottom:10px; color:#4d85ff;}
+        .project-card .tech {font-size:0.85rem; font-weight: 700; color:#4d85ff; margin-bottom:15px; text-transform: uppercase;}
+        .project-card p {color: #666; margin-bottom: 20px; flex-grow: 1; line-height: 1.5;}
+        .project-card .links a {margin-right:15px; font-size: 1.2rem; color:#333; transition:0.3s;}
+        .project-card .links a:hover {color:#4d85ff;}
+
+        /* ----- Experience Section ----- */
+        .timeline {position:relative; padding-left:30px; margin-top: 30px;}
+        .timeline::before {content:''; position:absolute; left:10px; top:0; bottom:0; width:3px; background:#4d85ff;}
+        .timeline-item {position:relative; margin-bottom:40px;}
+        .timeline-item::before {content:''; position:absolute; left:-27px; top:5px; width:18px; height:18px; background:#4d85ff; border-radius:50%; border: 4px solid #fff;}
+        .timeline-item h3 {margin-bottom:5px; color:#111;}
+        .timeline-item .date {display: block; font-weight: 600; color:#4d85ff; margin-bottom: 10px; font-size: 0.9rem;}
+
+        /* ----- Contact Section ----- */
+        #contact {background: #fff; text-align: center;}
+        #contact form {display:flex; flex-direction:column; gap:15px; max-width:600px; margin:40px auto 0;}
+        #contact input, #contact textarea {padding:15px; border-radius:8px; border:1px solid #ddd; width:100%; font-size: 1rem;}
+        #contact button {padding:15px; border:none; border-radius:30px; background:#4d85ff; color:#fff; font-weight:600; cursor:pointer; transition:0.3s;}
+        #contact button:hover {background:#3b6edb;}
+
+        @media(max-width:768px){
+            nav ul {display: none;}
+            #about {flex-direction:column; text-align:center;}
+            #hero h1 {font-size: 2.5rem;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Anjali Kamble</div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <h1>Hi, I'm Anjali Kamble</h1>
+        <h2 id="typewriter"></h2>
+        <div>
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="myresume.pdf" class="btn btn-outline" download><i class="fas fa-download"></i> My Resume</a>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="profile-img-container">
+            <img src="profile1.jpg" alt="Anjali Kamble">
+        </div>
+        <div class="text">
+            <h2>About Me</h2>
+            <p>I am an <strong>Aspiring Product Intern</strong> at VIT Pune. I am passionate about creating impactful, user-centric digital experiences by applying full-stack development and UI/UX design thinking.</p>
+            <p>I have solved <strong>100+ problems</strong> on GeeksforGeeks and Strivers A2Z, maintaining a strong grasp of DSA and logic building.</p>
+            <div class="achievement-badge">
+                <i class="fas fa-trophy"></i> Top 20 / 190 Groups - Innohack 2.0 (2025)
+            </div>
+            <div class="social-icons" style="margin-top: 25px;">
+                <a href="https://www.linkedin.com/in/anjali-kamble-3489882a7/" target="_blank" style="font-size: 1.5rem; margin-right: 15px; color:#0077b5;"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/AnjaliK7378" target="_blank" style="font-size: 1.5rem; color:#333;"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2>Technical Skills</h2>
+        <div class="skill">
+            <div class="skill-name"><span>Web (html, css, javascript, ReactJS, Node.js, PHP)</span><span>90%</span></div>
+            <div class="skill-bar"><div class="progress" data-percent="90%"></div></div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><span>Languages (Java, C++, Python)</span><span>85%</span></div>
+            <div class="skill-bar"><div class="progress" data-percent="85%"></div></div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><span>Databases (MySQL, MongoDB, SQLite)</span><span>80%</span></div>
+            <div class="skill-bar"><div class="progress" data-percent="80%"></div></div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><span>Android Development (Java)</span><span>80%</span></div>
+            <div class="skill-bar"><div class="progress" data-percent="80%"></div></div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="tech">Python • OpenCV • Mediapipe</div>
+                <h3>Hand Gesture Recognition System</h3>
+                <p>Built a real-time system to control PowerPoint slides touch-free. Uses computer vision to mimic keyboard shortcuts, enabling smooth, hands-free presentations.</p>
+                <div class="links"><a href="https://github.com/AnjaliK7378"><i class="fab fa-github"></i> Source</a></div>
+            </div>
+            <div class="project-card">
+                <div class="tech">ESP32 • IoT • Mobile App</div>
+                <h3>Smart Irrigation & Monitoring</h3>
+                <p>Automated water and nutrient delivery using ESP32 and sensors. Includes a mobile app and cloud dashboard for real-time tracking and remote control.</p>
+            </div>
+            <div class="project-card">
+                <div class="tech">PHP • MySQL • Web</div>
+                <h3>Gas Agency Management System</h3>
+                <p>Automated bookings, stock tracking, and billing for gas agencies. Centralized customer and supplier records into an efficient reporting dashboard.</p>
+            </div>
+            <div class="project-card">
+                <div class="tech">Python • NLP • TTS</div>
+                <h3>Voice Assistant</h3>
+                <p>Combined voice recognition and NLP to perform web searches and app control. Provides a smooth, hands-free interface for information retrieval.</p>
+                <div class="links"><a href="https://github.com/AnjaliK7378"><i class="fab fa-github"></i> Source</a></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="container">
+        <h2>Education & Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Web Development Intern</h3>
+                <span class="date">Inlight Technologies | 2024</span>
+                <p>Built responsive web pages using HTML, CSS and JavaScript. Gained industry exposure to front-end workflows.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>B.Tech in Computer Engineering</h3>
+                <span class="date">VIT Pune | 2024 – 2027</span>
+                <p>Currently in 3rd Year. <strong>CGPA: 8.52</strong>. Focused on DSA, product optimization, and full-stack development.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Diploma in Computer Engineering</h3>
+                <span class="date">GRWP Latur | 2021 – 2024</span>
+                <p>Graduated with <strong>94.47%</strong>. Developed foundational skills in systems and programming.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Email: anjalikamble2326@gmail.com | Phone: +91 7378710910</p>
+            <form id="contact-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+     <script>
+    // --- 1. Typewriter Effect ---
+    const words = ['Web Developer', 'Product Enthusiast', 'Problem Solver', 'VITian'];
+    let wordIndex = 0, charIndex = 0, isDeleting = false;
+    const typewriter = document.getElementById('typewriter');
+
+    function type(){
+        const currentWord = words[wordIndex];
+        typewriter.textContent = isDeleting ? currentWord.substring(0, charIndex--) : currentWord.substring(0, charIndex++);
+        if(!isDeleting && charIndex === currentWord.length + 1){
+            isDeleting = true; setTimeout(type, 1500);
+        } else if(isDeleting && charIndex === 0){
+            isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(type, 500);
+        } else {
+            setTimeout(type, isDeleting ? 100 : 200);
+        }
+    }
+    type();
+
+    // --- 2. Skill Bars Animation ---
+    const skillBars = document.querySelectorAll('.progress');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.style.width = entry.target.getAttribute('data-percent');
+            }
+        });
+    }, { threshold: 0.5 });
+    skillBars.forEach(bar => observer.observe(bar));
+
+    // --- 3. NEW: Contact Form Database Integration ---
+    const contactForm = document.getElementById('contact-form');
+    
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Target your form inputs
+        const formData = {
+            name: contactForm.querySelector('input[type="text"]').value,
+            email: contactForm.querySelector('input[type="email"]').value,
+            message: contactForm.querySelector('textarea').value
+        };
+
+        try {
+            // Fetch sends the data to your Node.js server running on port 5000
+            const response = await fetch('http://localhost:5000/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if(response.ok) {
+                alert("🚀 " + result.message); // Should say "Message saved to MongoDB!"
+                contactForm.reset(); // Clears the form
+            } else {
+                alert(" Something went wrong on the server.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert(" Connection Failed. Is your Node.js server running in the terminal?");
+        }
+    });
+</script>
+</body>
+</html>
